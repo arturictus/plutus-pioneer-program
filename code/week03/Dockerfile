@@ -5,6 +5,6 @@ COPY . .
 RUN ls
 WORKDIR code/week03
 RUN ls
-RUN cabal update && cabal install
+RUN cabal update && cabal install --lib
 
 CMD ["cabal", "repl"]
