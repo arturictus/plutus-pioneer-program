@@ -1,5 +1,5 @@
 FROM haskell:8
-RUN apt-get update -y && apt-get install -y libsodium-any pkg-config
+RUN apt-get update -y && apt-get install -y libsodium-dev pkg-config
 
 COPY . .
 RUN ls
