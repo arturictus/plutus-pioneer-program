@@ -10,6 +10,8 @@
 {-# LANGUAGE TypeFamilies        #-}
 {-# LANGUAGE TypeOperators       #-}
 
+-- artur change
+
 module Week03.Solution1 where
 
 import           Control.Monad        hiding (fmap)
