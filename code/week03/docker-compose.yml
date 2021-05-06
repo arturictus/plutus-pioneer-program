@@ -6,7 +6,7 @@ services:
       - ./:/app
     command:
       - '/bin/bash'
-   server:
+  server:
     image: arturictus/ppp:0.0.3
     ports:
       - '8080:8080'
