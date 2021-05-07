@@ -11,6 +11,7 @@ License-files:       LICENSE
 library
   hs-source-dirs:      src
   exposed-modules:     Week04.Contract
+                     , Week04.Vesting
                      , Week04.Either
                      , Week04.Homework
                      , Week04.Maybe

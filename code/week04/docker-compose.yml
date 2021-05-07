@@ -7,7 +7,7 @@ services:
     command:
       - '/bin/bash'
   server:
-    image: arturictus/ppp:0.0.3
+    image: arturictus/plutus-pioneer-program
     ports:
       - '8080:8080'
     command:
@@ -15,7 +15,7 @@ services:
       - --run
       - 'cd plutus-playground-client && plutus-playground-server'
   client:
-    image: arturictus/ppp:0.0.3
+    image: arturictus/plutus-pioneer-program:week04-playground
     command:
       - nix-shell
       - --run
