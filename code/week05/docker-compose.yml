@@ -1,13 +1,13 @@
 version: '3.6'
 services:
   dev:
-    image: arturictus/plutus-pioneer-program:week04-cabal
+    image: arturictus/plutus-pioneer-program:week05-cabal
     volumes:
       - ./:/app
     command:
       - '/bin/bash'
   server:
-    image: arturictus/plutus-pioneer-program:week04-playground
+    image: arturictus/plutus-pioneer-program:week05-playground
     ports:
       - '8080:8080'
     command:
@@ -15,7 +15,7 @@ services:
       - --run
       - 'cd plutus-playground-client && plutus-playground-server'
   client:
-    image: arturictus/plutus-pioneer-program:week04-playground
+    image: arturictus/plutus-pioneer-program:week05-playground
     command:
       - nix-shell
       - --run
