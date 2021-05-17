@@ -1,0 +1,9 @@
+FROM haskell:8
+
+RUN apt-get update -y && apt-get install -y libsodium-dev pkg-config
+
+COPY code/week06/cabal.project /code
+WORKDIR /code
+RUN cabal update && cabal install --lib
+
+CMD ["cabal", "repl"]
