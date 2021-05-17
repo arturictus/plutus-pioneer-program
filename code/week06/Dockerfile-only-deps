@@ -1,9 +1,22 @@
 FROM haskell:8
 
-RUN apt-get update -y && apt-get install -y libsodium-dev pkg-config
-
-COPY code/week06/cabal.project /code
-WORKDIR /code
-RUN cabal update && cabal install --lib
+RUN apt-get update -y && apt-get -yq --no-install-suggests --no-install-recommends install \
+    build-essential \
+    ca-certificates \
+    curl \
+    git \
+    libgmp-dev \
+    liblapack-dev \
+    liblzma-dev \
+    libpq-dev \
+    libyaml-dev \
+    netbase \
+    openssh-client \
+    pkg-config \
+    libsodium-dev \
+    zlib1g-dev
+# Example found in: https://oleg.fi/gists/posts/2019-07-04-docker-haskell-example.html
+COPY code/week06/*.cabal code/week06/cabal.project /build/
+RUN cabal v2-build -v1 --dependencies-only all
 
 CMD ["cabal", "repl"]
