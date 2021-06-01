@@ -26,3 +26,9 @@ services:
       - '8009:8009'
     links:
       - server
+  nix-shell:
+    image: arturictus/plutus-pioneer-program:week06-playground
+    command:
+      - nix-shell
+    volumes:
+      - ./:/app
