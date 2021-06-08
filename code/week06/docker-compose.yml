@@ -27,7 +27,10 @@ services:
     links:
       - server
   nix-shell:
-    image: arturictus/plutus-pioneer-program:week06-playground
+    build:
+      context: .
+      dockerfile: Dockerfile-nix-cabal
+    # image: arturictus/plutus-pioneer-program:week06-playground
     command:
       - nix-shell
     volumes:
