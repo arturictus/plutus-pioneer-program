@@ -3,7 +3,7 @@ FROM nixos/nix:latest
 RUN echo "substituters        = https://hydra.iohk.io https://iohk.cachix.org https://cache.nixos.org/" >> /etc/nix/nix.conf
 RUN echo "trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" >> /etc/nix/nix.conf
 
-# Fix wget cabal error: https://github.com/haskell/cabal/issues/6126
+# Fix wget cabal error: https://github.com/haskell/cabal/issues/6126r
 RUN   apk update \                                                                                                                                                                                                                        
   &&   apk add ca-certificates wget \                                                                                                                                                                                                      
   &&   update-ca-certificates   # This line may not do anything
@@ -45,7 +45,8 @@ EXPOSE 8009
 
 COPY . /app
 
-RUN nix-shell --run "cd /app/code/week06 && cabal build"
+RUN nix-shell --run "cd /app && cabal update && cabal build"
 
 CMD ["nix-shell"]
+# CMD ["bin/sh"]
 

@@ -33,5 +33,5 @@ services:
     # image: arturictus/plutus-pioneer-program:week06-playground
     command:
       - nix-shell
-    volumes:
-      - ./:/app
+    # volumes:
+    #   - ./:/app
