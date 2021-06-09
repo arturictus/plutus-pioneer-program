@@ -45,7 +45,7 @@ EXPOSE 8009
 
 COPY . /app
 
-RUN nix-shell --run "cd /code/week06 && cabal update && cabal build"
+RUN nix-shell --run "cd /app/code/week06 && cabal update && cabal build"
 
 CMD ["nix-shell"]
 # CMD ["bin/sh"]
