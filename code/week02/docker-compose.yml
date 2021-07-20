@@ -1,0 +1,44 @@
+version: '3.6'
+services:
+  dev:
+    image: plutus:81ba78edb1d634a13371397d8c8b19829345ce0d
+    build:
+      context: .
+      dockerfile: ../Dockerfile
+      args:
+        PLUTUS_COMMIT: '81ba78edb1d634a13371397d8c8b19829345ce0d'
+    command:
+      - nix-shell
+    volumes:
+      - ./:/app
+  server:
+    image: plutus:81ba78edb1d634a13371397d8c8b19829345ce0d
+    build:
+      context: .
+      dockerfile: ../Dockerfile
+      args:
+        PLUTUS_COMMIT: '81ba78edb1d634a13371397d8c8b19829345ce0d'
+    ports:
+      - '8080:8080'
+    command:
+      - nix-shell
+      - --run
+      - 'cd plutus-playground-client && plutus-playground-server'
+  client:
+    image: plutus:81ba78edb1d634a13371397d8c8b19829345ce0d
+    build:
+      context: .
+      dockerfile: ../Dockerfile
+      args:
+        PLUTUS_COMMIT: '81ba78edb1d634a13371397d8c8b19829345ce0d'
+    command:
+      - nix-shell
+      - --run
+      - 'cd plutus-playground-client && npm run start'
+    depends_on:
+      - server
+    ports:
+      - '8009:8009'
+    # network_mode: 'host'
+    links:
+      - server
