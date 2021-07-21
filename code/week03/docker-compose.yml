@@ -39,5 +39,6 @@ services:
     #   - server
     ports:
       - '8009:8009'
+      - '443:443'
     links:
       - server
